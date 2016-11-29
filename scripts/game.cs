@@ -5,27 +5,21 @@ public class Game {
     public static Action StartGame;
     public static bool canPlay = true;
     public Game () {
-        Health.power = 100;
-        Health.message = "You are getting stronger.";
-        Ammo.message = "You have a little bit more ammo.";
-        Cave.StartMessage = "You have entered a cave";
+            Cave.StartMessage = "You have entered a cave";
         Underwater.objects = new string []{"seaweed", "Coral", "fish", "shark"};
       }
     
     // This runs at start of game.
     public void Start (){
+        Console.WriteLine("What is your name?");
         Console.WriteLine("Please type your name");
         name = Console.ReadLine();
-        Console.WriteLine("Your Player Name is " + name + ".");
-        while (canPlay){
-            System.Threading.Thread.Sleep(1000);
-            Play();
-        }
-        Console.WriteLine("you DIED!");
-        Console.WriteLine("Game OVER!");
+        Console.WriteLine("Well" + name + ", You've been recruted to help Santa this year.");
+        Console.WriteLine("You see, Santa broke one of his legs in a snowmobille accident, you know how much of a daredevil he is. He needs your help do deliver presents to the most difficult to reach houses.");
+
     }
-    private string gameState = "Start";
-    private GameStateMachine.GameStates toEnum;
+    private string gameStatus = "Start";
+    private GameStatesBase.GameSatuses toEnum;
     private void Play (){
         
        switch (toEnum)
