@@ -24,18 +24,19 @@ public class Game {
                 Console.WriteLine("Game OVER!");
                 Environment.Exit(0);
                 break;
-
             case GameStatesBase.GameStatuses.Died:
                 Console.WriteLine("You've Failed in your mission!");
                 GameStatesBase.currentGamestatus = GameStatesBase.GameStatuses.End;
                 Continue();
                 break;
-            
+            case GameStatesBase.GameStatuses.play:
+                GameStatesBase.currentGamestatus = GameStatesBase.GameStatuses.Continue;
+                gameStatus = Console.ReadLine();
+                if (Enum.TryParse(gameStatus, out toEnum)) 
+                    Continue();
+                break;
             case GameStatesBase.GameStatuses.start:
-                Console.WriteLine("Please type your name:");
-                name = Console.ReadLine();
-                Console.WriteLine("Your Player name is " + name);
-                Console.WriteLine("Do you wish to Accept the challenge?   "+ " Type start, or help for help" );
+                Console.WriteLine("Do you wish to Accept the challenge?   "+ " Type play. or help, for help" );
                 gameStatus = Console.ReadLine();
                 if (Enum.TryParse(gameStatus, out toEnum)) 
                     Continue();

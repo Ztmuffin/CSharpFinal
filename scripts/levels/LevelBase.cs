@@ -1,7 +1,7 @@
  using System;
 
 public class LevelBase {
-    public WeaponBase m16 = new WeaponBase();
+   
     public string StartMessage;
     public bool entranceOpen = true;
 
@@ -19,13 +19,13 @@ public class LevelBase {
             break;
             case 1:
                 Console.WriteLine("You've walked into " + objects[i]);
-                GameStatesBase.currentGamestatus = GameStatesBase.GameStatuses.Died;
+                LooseLife();
             break;
 
             case 2:
                 Console.WriteLine("You've walked into " + objects[i]);
                 if (objects[i] == "Shark"){
-                    m16.SemiAutoFire();
+                    
                 }
             break;
 
@@ -49,4 +49,5 @@ public class LevelBase {
         
     }
 
+public EndGame LooseLife = new EndGame();
 }
