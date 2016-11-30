@@ -7,3 +7,4 @@
                 myGame.Start();
         }
     }
+// I know this runs the game but I am still trying to figure out how.
