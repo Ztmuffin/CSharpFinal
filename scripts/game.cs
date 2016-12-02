@@ -11,7 +11,7 @@ public class Game {
         name = Console.ReadLine();
         Console.WriteLine("Well" + name + ", You've been recruted to help Santa this year.");
         Console.WriteLine("You see, Santa broke one of his legs in a snowmobille accident, you know how much of a daredevil he is. He needs your help do deliver presents to the most difficult to reach houses.");
-        Play();
+        Continue();
 
     }
     private string gameStatus = "start";
@@ -50,14 +50,14 @@ public class Game {
                 {
                     Cave.Enter();
                     Random randomNum = new Random();
-                    Cave.Encounter(randomNum.Next(0, Cave.objects.Length));
+                    Cave.HouseEncounter(randomNum.Next(0, Cave.objects.Length));
                     GameTimer();
                     Continue();
                 }
                 break;
             default:
                 Console.WriteLine("I'm sorry i don't understand what that means." );
-                Play();
+                Continue();
                 break;
        }
         
@@ -68,7 +68,7 @@ public class Game {
       }
     
      //Game Levels
-    private LevelBase Cave = new CaveLevel();
+    private LevelBase Cave = new CaveHouse();
     public static LevelBase Underwater = new LevelBase();
 
     // game powerups?
@@ -89,6 +89,7 @@ public class Game {
                 Start();
             }
         }
+   
     public string name;
 
     private int score;

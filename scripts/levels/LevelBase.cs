@@ -15,32 +15,20 @@ public class LevelBase {
     public void HouseEncounter (int i){
         switch (i){
             case 0:
-                Console.WriteLine("While on the sleigh you've come face to face with " + objects[i]);
+                Console.WriteLine("While sneaking in to deliver presents, you run into " + objects[i]);
             break;
             case 1:
-                Console.WriteLine("You've walked into " + objects[i]);
-                LooseLife();
-            break;
-
-            case 2:
-                Console.WriteLine("You've walked into " + objects[i]);
-                if (objects[i] == "Shark"){
-                    
+                Console.WriteLine("You've Come across " + objects[i]);
+                if (objects[i] == "The Christmas Tree"){ 
+                    Game.GameTimer();
+                    Console.WriteLine("You've sucessfully found the Christmas Tree! You drop off your presents and head back to your sleigh.");
                 }
             break;
-
-            case 3:
-                Console.WriteLine("You've walked into " + objects[i]);
-                Game.GameTimer();
-                Random randomNum = new Random();
-                Game.Underwater.HouseEncounter(randomNum.Next(0, Game.Underwater.objects.Length));
-            break;
-        }
-
+       }
         if (i < objects.Length){
             Console.WriteLine("You've walked into " + objects[i]);
             if(objects[i] == "lava"){
-                Game.canPlay = false;
+                myLostLife.LooseLifes();
             }
         }
         else{
@@ -48,6 +36,6 @@ public class LevelBase {
         }
         
     }
+    LooseLife myLostLife = new LooseLife();
 
-public EndGame LooseLife = new EndGame();
 }
