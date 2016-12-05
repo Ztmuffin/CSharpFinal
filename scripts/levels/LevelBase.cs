@@ -26,7 +26,7 @@ public class LevelBase {
             break;
        }
         if (i < objects.Length){
-            Console.WriteLine("You've walked into " + objects[i]);
+            Console.WriteLine("You've fallen into " + objects[i]);
             if(objects[i] == "lava"){
                 myLostLife.LooseLifes();
             }
@@ -36,6 +36,6 @@ public class LevelBase {
         }
         
     }
-    LooseLife myLostLife = new LooseLife();
+    public LooseLife myLostLife = new LooseLife();
 
 }

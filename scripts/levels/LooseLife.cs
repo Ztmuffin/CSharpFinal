@@ -1,6 +1,6 @@
 using System;
 public class LooseLife{
-    int lives = 5;
+   private int lives = 5;
      public void LooseLifes(){
         if (lives > 0){
             lives--;
