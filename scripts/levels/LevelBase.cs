@@ -12,7 +12,7 @@ public class LevelBase {
     public void Enter (){
         Console.WriteLine(StartMessage);
     }
-    public void HouseEncounter (int i){
+    public void HouseEncounter (int i, string traveled){
         switch (i){
             case 0:
                 Console.WriteLine("While sneaking in to deliver presents, you run into " + objects[i]);

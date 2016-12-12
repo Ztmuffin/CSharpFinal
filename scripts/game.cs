@@ -2,8 +2,7 @@ using System;
 
 public class Game {
     
-    public static Action StartGame;
-    public static bool canPlay = true;
+    
       
     // This is supposed to be called 1x
     public void Play (){
@@ -58,11 +57,10 @@ public class Game {
         Continue();
 
     }
-    private string gameStatus = "start";
+    private string gameStatus = "Start";
     public GameStatesBase.GameStatuses toEnum;
     private void Continue (){
-        Console.Clear();
-       switch (toEnum)
+           switch (toEnum)
        {
             case GameStatesBase.GameStatuses.End:
                 Console.WriteLine("Game OVER!");
@@ -73,13 +71,12 @@ public class Game {
                 GameStatesBase.currentGamestatus = GameStatesBase.GameStatuses.End;
                 Continue();
                 break;
+                //If play, change to continue then run again.
             case GameStatesBase.GameStatuses.play:
-                GameStatesBase.currentGamestatus = GameStatesBase.GameStatuses.Continue;
-                gameStatus = Console.ReadLine();
-                if (Enum.TryParse(gameStatus, out toEnum)) 
-                    Continue();
+                GameStatesBase.currentGamestatus = GameStatesBase.GameStatuses.Fight; 
+                 Continue();
                 break;
-            case GameStatesBase.GameStatuses.start:
+            case GameStatesBase.GameStatuses.Start:
                 Console.WriteLine("Do you wish to Accept the challenge?   "+ " Type play. or help, for help" );
                 gameStatus = Console.ReadLine();
                 if (Enum.TryParse(gameStatus, out toEnum))
@@ -88,7 +85,8 @@ public class Game {
                 break;
              case GameStatesBase.GameStatuses.help:
                      Console.WriteLine("WTF do you need help for?");
-                     GameStatesBase.currentGamestatus = GameStatesBase.GameStatuses.start;
+                     GameStatesBase.currentGamestatus = GameStatesBase.GameStatuses.Start;
+                     GameTimer();
                      Continue();
                 break;
             case GameStatesBase.GameStatuses.Fight:
@@ -97,7 +95,7 @@ public class Game {
                     Cave.Enter();
                     Random randomNum = new Random();
                     // This is supposed to name Cave as a new level, Then you try to do the level.
-                    Cave.HouseEncounter(randomNum.Next(0, Cave.objects.Length));
+                    Cave.HouseEncounter(randomNum.Next(0, Cave.objects.Length), "came across");
                     GameTimer();
                     Continue();
                 }
