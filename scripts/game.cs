@@ -11,16 +11,57 @@ public class Game {
     }
      // This is supposed to run at start of game.
     public void Start (){
-        Play();
-        Console.WriteLine("Well" + name + ", You've been recruted to help Santa this year.");
         Console.WriteLine("You see, Santa broke one of his legs in a snowmobille accident, you know how much of a daredevil he is. He needs your help do deliver presents to the most difficult to reach houses.");
+        do{
+             Console.WriteLine("who are you?   Please choose.");
+             Console.WriteLine("Human");
+             Console.WriteLine("Elf");
+             Console.WriteLine("Yeti");
+             Console.WriteLine("undefined");
+             Who = Console.ReadLine ().ToUpper ();
+             if (Who == "HUMAN" || Who == "ELF" || Who == "YETI" || Who == "UNDEFINED")
+             {
+                 correct = 1;
+             } else{}
+        } while (correct == 0);
+            correct = 0;
+            
+            // player bonuses if they get any
+
+               if (Who == "HUMAN")
+        {
+            PlayerSpeed = PlayerSpeed + 2;
+            PlayerSkill = PlayerSkill + 2;
+            PlayerMagic = PlayerMagic++;
+        }
+               if (Who == "ELF")
+        {
+            PlayerSpeed = PlayerSpeed++;
+            PlayerSkill = PlayerSkill + 2;
+            PlayerMagic = PlayerMagic + 2;
+        }
+               if (Who == "YETI")
+        {
+            PlayerSpeed = PlayerSpeed + 2;
+            PlayerSkill = PlayerSkill++;
+            PlayerMagic = PlayerMagic + 2;
+        }
+               if (Who == "UNDEFINED")
+        {
+            PlayerSpeed = 0;
+            PlayerSkill = 0;
+            PlayerMagic = 0;
+        }
+    
+   
+
         Continue();
 
     }
     private string gameStatus = "start";
     public GameStatesBase.GameStatuses toEnum;
     private void Continue (){
-        
+        Console.Clear();
        switch (toEnum)
        {
             case GameStatesBase.GameStatuses.End:
@@ -90,14 +131,19 @@ public class Game {
             {
                 Console.WriteLine("Your entry was blank, please try again");
             } else {
+                Console.WriteLine("hello "+ name + ".");
+                Console.WriteLine("Well " + name + ", You've been recruted to help Santa this year.");
                 Start();
             }
         }
-   
+      
     public string name;
-    public int walk;
   
+    private int correct = 0;
+    string Who;
+    int PlayerMagic = 0;
+    int PlayerSpeed = 0;
+    int PlayerSkill = 0;
 
-    private int score;
 }
 
