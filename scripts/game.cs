@@ -2,6 +2,7 @@ using System;
 
 public class Game {
     
+    public static bool canPlay = true;
     
       
     // This is supposed to be called 1x
@@ -51,9 +52,6 @@ public class Game {
             PlayerSkill = 0;
             PlayerMagic = 0;
         }
-    
-   
-
         Continue();
 
     }
@@ -63,39 +61,54 @@ public class Game {
            switch (toEnum)
        {
             case GameStatesBase.GameStatuses.End:
+                gameStatus = "End";
+                if (Enum.TryParse(gameStatus, out toEnum))
                 Console.WriteLine("Game OVER!");
+                canPlay = false;
                 Environment.Exit(0);
                 break;
             case GameStatesBase.GameStatuses.Died:
                 Console.WriteLine("You've Failed in your mission!");
                 GameStatesBase.currentGamestatus = GameStatesBase.GameStatuses.End;
+                GameTimer();
+                gameStatus = "End";
+                if (Enum.TryParse(gameStatus, out toEnum))
                 Continue();
                 break;
                 //If play, change to continue then run again.
             case GameStatesBase.GameStatuses.play:
-                GameStatesBase.currentGamestatus = GameStatesBase.GameStatuses.Fight; 
+                GameStatesBase.currentGamestatus = GameStatesBase.GameStatuses.Fight;
+                gameStatus = "Fight"; 
+                if (Enum.TryParse(gameStatus, out toEnum))
                  Continue();
                 break;
             case GameStatesBase.GameStatuses.Start:
                 Console.WriteLine("Do you wish to Accept the challenge?   "+ " Type play. or help, for help" );
                 gameStatus = Console.ReadLine();
                 if (Enum.TryParse(gameStatus, out toEnum))
-                GameStatesBase.currentGamestatus = GameStatesBase.GameStatuses.Fight; 
+                    GameTimer();
                     Continue();
                 break;
              case GameStatesBase.GameStatuses.help:
                      Console.WriteLine("WTF do you need help for?");
                      GameStatesBase.currentGamestatus = GameStatesBase.GameStatuses.Start;
                      GameTimer();
+                     gameStatus = "Start";
+                     if (Enum.TryParse(gameStatus, out toEnum))
                      Continue();
                 break;
             case GameStatesBase.GameStatuses.Fight:
-                while (true)
+                gameStatus = "Fight"; 
+                while (Game.canPlay)
                 {
+                     // This is supposed to name Cave as a new level, Then you try to do the level.
                     Cave.Enter();
                     Random randomNum = new Random();
-                    // This is supposed to name Cave as a new level, Then you try to do the level.
                     Cave.HouseEncounter(randomNum.Next(0, Cave.objects.Length), "came across");
+                    GameTimer();
+                    Mountain.Enter();
+                   //this is supposed to switch it up
+                    Mountain.HouseEncounter(randomNum.Next(0, Mountain.objects.Length),"Entering the home you came across");
                     GameTimer();
                     Continue();
                 }
@@ -107,10 +120,21 @@ public class Game {
        }
         
     }
-     
-    
+     // supposed to subtract a life when something bad happens.
+     int lives = 5;
+     public void LooseLifes(){
+        if (lives > 0){
+            lives--;
+        Console.WriteLine ("you have " + lives + " lives left.");
+        }
+        else {
+            GameStatesBase.currentGamestatus = GameStatesBase.GameStatuses.End;
+            canPlay = false;
+        }
+    }
      //Game Levels
     private LevelBase Cave = new CaveHouse();
+    private LevelBase Mountain = new LevelBase();
     public static LevelBase Underwater = new LevelBase();
 
     // game powerups?

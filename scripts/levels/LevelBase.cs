@@ -16,26 +16,32 @@ public class LevelBase {
         switch (i){
             case 0:
                 Console.WriteLine("While sneaking in to deliver presents, you run into " + objects[i]);
+               if (objects[i] == "The Christmas Tree") 
+                    {Game.GameTimer();
+                    Console.WriteLine("You've sucessfully found the Christmas Tree! You drop off your presents and head back to the sleigh.");}
+                else if (objects[i] == "lava" || objects[i] == "Icicles" )
+                    {Console.WriteLine("You've sliped and fallen onto " + objects[i]);
+                        myLostLife.LooseLifes();
+                    }
+                // trying to use switch statement for both but having a hard time getting it to run.
             break;
             case 1:
-                Console.WriteLine("You've Come across " + objects[i]);
-                if (objects[i] == "The Christmas Tree"){ 
-                    Game.GameTimer();
-                    Console.WriteLine("You've sucessfully found the Christmas Tree! You drop off your presents and head back to your sleigh.");
-                }
+               Console.WriteLine("While sneaking in to deliver presents, you run into " + objects[i]);
+                if (objects[i] == "The Christmas Tree") 
+                    {Game.GameTimer();
+                    Console.WriteLine("You've sucessfully found the Christmas Tree! You drop off your presents and head back to the sleigh.");}
+                else if (objects[i] == "lava" || objects[i] == "Icicles" )
+                    {Console.WriteLine("You've sliped and fallen onto " + objects[i]);
+                        myLostLife.LooseLifes();
+                    }
             break;
-       }
-        if (i < objects.Length){
-            Console.WriteLine("You've fallen into " + objects[i]);
-            if(objects[i] == "lava"){
-                myLostLife.LooseLifes();
-            }
-        }
-        else{
+        default:
             Console.WriteLine("Your path is clear! GO DELIVER YOUR PRESENTS.");
+        break;
         }
         
     }
-    public LooseLife myLostLife = new LooseLife();
+    
+   public static Game myLostLife = new Game();
 
 }
