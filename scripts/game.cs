@@ -14,7 +14,6 @@ public class Game {
         Console.WriteLine("You see, Santa broke one of his legs in a snowmobille accident, you know how much of a daredevil he is. He needs your help do deliver presents to the most difficult to reach houses.");
        //Character Creation tools i found online:
 			do {
-				Console.Clear();
 				Console.WriteLine ("Please choose a gender as below:");
 				Console.WriteLine ("Male / Female");
 				Player_Gender = Console.ReadLine ().ToUpper ();
