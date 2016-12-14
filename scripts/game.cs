@@ -13,6 +13,7 @@ public class Game {
     public void Start (){
         Console.WriteLine("You see, Santa broke one of his legs in a snowmobille accident, you know how much of a daredevil he is. He needs your help do deliver presents to the most difficult to reach houses.");
        //Character Creation tools i referenced from what i found online:
+        GameTimer();
         do{
              Console.WriteLine("who are you?   Please choose.");
              Console.WriteLine("Human");
@@ -144,7 +145,7 @@ public class Game {
     }
      //Game Levels
     private LevelBase Cave = new CaveHouse();
-    public static LevelBase Mountain = new LevelBase();
+    public static LevelBase Mountain = new MountainHouse();
         public void MountainLevel(){
             Mountain.Enter();
             Random randomNum = new Random();
@@ -174,6 +175,7 @@ public class Game {
                 Console.WriteLine("Your entry was blank, please try again");
             } else {
                 Console.WriteLine("hello "+ name + ".");
+                GameTimerShort();
                 Console.WriteLine("Well " + name + ", You've been recruted to help Santa this year.");
                 Start();
             }
