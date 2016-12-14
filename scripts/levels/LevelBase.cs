@@ -42,7 +42,10 @@ public class LevelBase {
         }
         
     }
-    public void KidName (int i, string named){
+    public void Environment(int i, string environmented){
+        
+    }
+    public void KidName (int i){
         Console.WriteLine("You are visiting " + ChildNames[i] + " on the nice list.");
     }
    public static Game myLostLife = new Game();

@@ -118,13 +118,13 @@ public class Game {
                      // This is supposed to name Cave as a new level, Then you try to do the level.
                     Cave.Enter();
                     Random randomNum = new Random();
-                    Cave.KidName(randomNum.Next(0, Cave.ChildNames.Length), "Named");
+                    Cave.KidName(randomNum.Next(0, Cave.ChildNames.Length));
                     Cave.HouseEncounter(randomNum.Next(0, Cave.objects.Length), "came across");
                     GameTimer();
                     //this is supposed to switch it up, by trying something else instead.
                    // MountainLevel();
                     Mountain.Enter();
-                    Mountain.KidName(randomNum.Next(0, Mountain.ChildNames.Length), "Named");
+                    Mountain.KidName(randomNum.Next(0, Mountain.ChildNames.Length));
                     Mountain.HouseEncounter(randomNum.Next(0, Mountain.objects.Length),"Entering the home you came across ");
                     GameTimer();
                     Continue();
