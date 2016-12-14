@@ -106,7 +106,7 @@ public class Game {
              case GameStatesBase.GameStatuses.help:
                      Console.WriteLine("WTF do you need help for?");
                      GameStatesBase.currentGamestatus = GameStatesBase.GameStatuses.Start;
-                     GameTimer();
+                     GameTimerShort();
                      gameStatus = "Start";
                      if (Enum.TryParse(gameStatus, out toEnum))
                      Continue();
@@ -117,14 +117,22 @@ public class Game {
                 {
                      // This is supposed to name Cave as a new level, Then you try to do the level.
                     Cave.Enter();
+                    GameTimer();
                     Random randomNum = new Random();
                     Cave.KidName(randomNum.Next(0, Cave.ChildNames.Length));
+                    GameTimer();
+                    Cave.Environment(randomNum.Next(0, Cave.environment.Length));
+                    GameTimer();
                     Cave.HouseEncounter(randomNum.Next(0, Cave.objects.Length), "came across");
                     GameTimer();
                     //this is supposed to switch it up, by trying something else instead.
                    // MountainLevel();
                     Mountain.Enter();
+                    GameTimer();
                     Mountain.KidName(randomNum.Next(0, Mountain.ChildNames.Length));
+                    GameTimer();
+                    Mountain.Environment(randomNum.Next(0, Mountain.environment.Length));
+                    GameTimer();
                     Mountain.HouseEncounter(randomNum.Next(0, Mountain.objects.Length),"Entering the home you came across ");
                     GameTimer();
                     Continue();
