@@ -173,6 +173,7 @@ public class Game {
         }
       
     public string name;
+    string Player_Gender;
   
     private int correct = 0;
     string Who;
