@@ -12,6 +12,19 @@ public class Game {
      // This is supposed to run at start of game.
     public void Start (){
         Console.WriteLine("You see, Santa broke one of his legs in a snowmobille accident, you know how much of a daredevil he is. He needs your help do deliver presents to the most difficult to reach houses.");
+       //Character Creation tools i found online:
+			do {
+				Console.Clear();
+				Console.WriteLine ("Please choose a gender as below:");
+				Console.WriteLine ("Male / Female");
+				Player_Gender = Console.ReadLine ().ToUpper ();
+				if (Player_Gender == "MALE" || Player_Gender == "FEMALE") 
+				{
+					correct = 1;
+				}
+				else {}
+			} while(correct == 0);
+			correct = 0;
         do{
              Console.WriteLine("who are you?   Please choose.");
              Console.WriteLine("Human");
