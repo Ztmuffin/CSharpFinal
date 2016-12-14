@@ -118,7 +118,8 @@ public class Game {
                     Random randomNum = new Random();
                     Cave.HouseEncounter(randomNum.Next(0, Cave.objects.Length), "came across");
                     GameTimer();
-                    //this is supposed to switch it up
+                    //this is supposed to switch it up, but trying something else instead.
+                   
                     Mountain.Enter();
                     Mountain.HouseEncounter(randomNum.Next(0, Mountain.objects.Length),"Entering the home you came across");
                     GameTimer();
@@ -155,7 +156,7 @@ public class Game {
 
     // game timer?
     public static void GameTimer () {
-        System.Threading.Thread.Sleep(2000);
+        System.Threading.Thread.Sleep(4000);
     }
     // name entry function
         public void NameFunction (){
