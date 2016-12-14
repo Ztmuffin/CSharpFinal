@@ -118,8 +118,8 @@ public class Game {
                     Random randomNum = new Random();
                     Cave.HouseEncounter(randomNum.Next(0, Cave.objects.Length), "came across");
                     GameTimer();
+                    //this is supposed to switch it up
                     Mountain.Enter();
-                   //this is supposed to switch it up
                     Mountain.HouseEncounter(randomNum.Next(0, Mountain.objects.Length),"Entering the home you came across");
                     GameTimer();
                     Continue();
@@ -146,7 +146,7 @@ public class Game {
     }
      //Game Levels
     private LevelBase Cave = new CaveHouse();
-    private LevelBase Mountain = new LevelBase();
+    public static LevelBase Mountain = new LevelBase();
     public static LevelBase Underwater = new LevelBase();
 
     // game powerups?

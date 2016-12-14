@@ -36,6 +36,18 @@ public class LevelBase {
                     }
             break;
         default:
+        case 2:
+               Console.WriteLine("You're looking for the Christmas Tree when you run into " + objects[i]);
+               Random randomNum = new Random();
+               Game.Mountain.HouseEncounter(randomNum.Next(0, Game.Mountain.objects.Length),"slid");
+                if (objects[i] == "The Christmas Tree") 
+                    {Game.GameTimer();
+                    Console.WriteLine("You've sucessfully found the Christmas Tree! You drop off your presents and head back to the sleigh.");}
+                else if (objects[i] == "lava" || objects[i] == "Icicles" )
+                    {Console.WriteLine("You've sliped and fallen onto " + objects[i]);
+                        myLostLife.LooseLifes();
+                    }
+            break;
             Console.WriteLine("Your path is clear! GO DELIVER YOUR PRESENTS.");
         break;
         }
