@@ -121,7 +121,12 @@ public class Game {
                     Cave.HouseEncounter(randomNum.Next(0, Cave.objects.Length), "came across");
                     GameTimer();
                     //this is supposed to switch it up, by trying something else instead.
-                   MountainLevel();
+                   // MountainLevel();
+                    Mountain.Enter();
+                    Mountain.KidName(randomNum.Next(0, Mountain.ChildNames.Length), "Named");
+                    Mountain.HouseEncounter(randomNum.Next(0, Mountain.objects.Length),"Entering the home you came across ");
+                    GameTimer();
+                    Continue();
                 }
                 break;
             default:
@@ -146,13 +151,13 @@ public class Game {
      //Game Levels
     private LevelBase Cave = new CaveHouse();
     public static LevelBase Mountain = new MountainHouse();
-        public void MountainLevel(){
+     /*   public void MountainLevel(){
             Mountain.Enter();
             Random randomNum = new Random();
             Mountain.HouseEncounter(randomNum.Next(0, Mountain.objects.Length),"Entering the home you came across");
             GameTimer();
             Continue();
-    }
+    }*/
 
     // game powerups?
     

@@ -8,6 +8,7 @@ public class LevelBase {
     public string[] environment;
 
     public string[] objects;
+    public string[] ChildNames;
 
     public void Enter (){
         Console.WriteLine(StartMessage);
@@ -41,7 +42,9 @@ public class LevelBase {
         }
         
     }
-    
+    public void KidName (int i, string named){
+        Console.WriteLine("You are visiting " + ChildNames[i] + " on the nice list.");
+    }
    public static Game myLostLife = new Game();
 
 }
