@@ -43,7 +43,7 @@ public class LevelBase {
         
     }
     public void Environment(int i){
-        Console.WriteLine("This house is " + environment[i] + " .");
+        Console.WriteLine("This house is " + environment[i] + ".");
     }
     public void KidName (int i){
         Console.WriteLine("You are visiting " + ChildNames[i] + " on the nice list.");
