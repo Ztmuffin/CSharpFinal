@@ -120,7 +120,7 @@ public class Game {
        }
         
     }
-     // supposed to subtract a life when something bad happens.
+     // supposed to subtract life when something bad happens.
      int lives = 5;
      public void LooseLifes(){
         if (lives > 0){
