@@ -12,18 +12,7 @@ public class Game {
      // This is supposed to run at start of game.
     public void Start (){
         Console.WriteLine("You see, Santa broke one of his legs in a snowmobille accident, you know how much of a daredevil he is. He needs your help do deliver presents to the most difficult to reach houses.");
-       //Character Creation tools i found online:
-			do {
-				Console.WriteLine ("Please choose a gender as below:");
-				Console.WriteLine ("Male / Female");
-				Player_Gender = Console.ReadLine ().ToUpper ();
-				if (Player_Gender == "MALE" || Player_Gender == "FEMALE") 
-				{
-					correct = 1;
-				}
-				else {}
-			} while(correct == 0);
-			correct = 0;
+       //Character Creation tools i referenced from what i found online:
         do{
              Console.WriteLine("who are you?   Please choose.");
              Console.WriteLine("Human");
@@ -36,8 +25,20 @@ public class Game {
                  correct = 1;
              } else{}
         } while (correct == 0);
+
+
             correct = 0;
-            
+            	do {
+				Console.WriteLine ("Please choose a gender as below:");
+				Console.WriteLine ("Male / Female");
+				Player_Gender = Console.ReadLine ().ToUpper ();
+				if (Player_Gender == "MALE" || Player_Gender == "FEMALE") 
+				{
+					correct = 1;
+				}
+				else {}
+			} while(correct == 0);
+			correct = 0;
             // player bonuses if they get any
 
                if (Who == "HUMAN")
@@ -82,7 +83,7 @@ public class Game {
             case GameStatesBase.GameStatuses.Died:
                 Console.WriteLine("You've Failed in your mission!");
                 GameStatesBase.currentGamestatus = GameStatesBase.GameStatuses.End;
-                GameTimer();
+                GameTimerShort();
                 gameStatus = "End";
                 if (Enum.TryParse(gameStatus, out toEnum))
                 Continue();
@@ -98,7 +99,7 @@ public class Game {
                 Console.WriteLine("Do you wish to Accept the challenge?   "+ " Type play. or help, for help" );
                 gameStatus = Console.ReadLine();
                 if (Enum.TryParse(gameStatus, out toEnum))
-                    GameTimer();
+                    GameTimerShort();
                     Continue();
                 break;
              case GameStatesBase.GameStatuses.help:
@@ -118,12 +119,8 @@ public class Game {
                     Random randomNum = new Random();
                     Cave.HouseEncounter(randomNum.Next(0, Cave.objects.Length), "came across");
                     GameTimer();
-                    //this is supposed to switch it up, but trying something else instead.
-                   
-                    Mountain.Enter();
-                    Mountain.HouseEncounter(randomNum.Next(0, Mountain.objects.Length),"Entering the home you came across");
-                    GameTimer();
-                    Continue();
+                    //this is supposed to switch it up, by trying something else instead.
+                   MountainLevel();
                 }
                 break;
             default:
@@ -148,7 +145,13 @@ public class Game {
      //Game Levels
     private LevelBase Cave = new CaveHouse();
     public static LevelBase Mountain = new LevelBase();
-    public static LevelBase Underwater = new LevelBase();
+        public void MountainLevel(){
+            Mountain.Enter();
+            Random randomNum = new Random();
+            Mountain.HouseEncounter(randomNum.Next(0, Mountain.objects.Length),"Entering the home you came across");
+            GameTimer();
+            Continue();
+    }
 
     // game powerups?
     
@@ -158,6 +161,10 @@ public class Game {
     public static void GameTimer () {
         System.Threading.Thread.Sleep(4000);
     }
+    public static void GameTimerShort (){
+         System.Threading.Thread.Sleep(2000);
+    }
+
     // name entry function
         public void NameFunction (){
             Console.WriteLine("What is your name?");
